@@ -6,12 +6,10 @@ namespace OrderHub.Services;
 
 public class OrderService
 {
-    // Коллекции для хранения заказов и истории действий
     private readonly List<Order> allOrders = new();
     private readonly Queue<Order> pendingQueue = new();
     private readonly Stack<string> undoHistory = new();
 
-    // Счётчик идентификаторов заказов
     private int nextOrderId = 0;
 
     public Order CreateOrder(string customerName, string productName, decimal price)
@@ -76,7 +74,6 @@ public class OrderService
         return true;
     }
 
-    // Отчёт 1: вывод всех заказов в порядке добавления
     public void PrintAllOrders()
     {
         Console.WriteLine("Все заказы:");
@@ -93,7 +90,6 @@ public class OrderService
         }
     }
 
-    // Отчёт 2: информация об очереди ожидающих заказов
     public void PrintPendingQueue()
     {
         Console.WriteLine($"Заказов ожидает обработки: {pendingQueue.Count}");
@@ -104,10 +100,8 @@ public class OrderService
             return;
         }
 
-        // Peek возвращает первый заказ, не удаляя его
         Console.WriteLine($"Первый в очереди: {pendingQueue.Peek()}");
 
-        // Перебираем все заказы в порядке поступления
         Console.WriteLine("Все заказы в очереди:");
 
         foreach (Order order in pendingQueue)
@@ -116,7 +110,6 @@ public class OrderService
         }
     }
 
-    // Отчёт 3: вывод истории действий от последнего к первому
     public void PrintRecentActions()
     {
         Console.WriteLine("История последних действий:");

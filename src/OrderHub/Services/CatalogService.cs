@@ -13,7 +13,6 @@ public class CatalogService
         products.Add(new Product(name, price, category));
     }
 
-    // Естественный порядок: от меньшей цены к большей.
     public void PrintSortedByNaturalOrder()
     {
         var sortedProducts = new List<Product>(products);
@@ -29,7 +28,6 @@ public class CatalogService
         }
     }
 
-    // Альтернативный порядок: по названию.
     public void PrintSortedByName()
     {
         var sortedProducts = new List<Product>(products);
@@ -45,7 +43,6 @@ public class CatalogService
         }
     }
 
-    // Дополнительный пример: по убыванию цены.
     public void PrintSortedByPriceDescending()
     {
         var sortedProducts = new List<Product>(products);
@@ -61,7 +58,6 @@ public class CatalogService
         }
     }
 
-    // Разовая сортировка лямбдой по длине названия.
     public void PrintSortedByNameLength()
     {
         var sortedProducts = new List<Product>(products);
@@ -82,7 +78,6 @@ public class CatalogService
         }
     }
 
-    // Вывод без сортировки: исходный порядок добавления.
     public void PrintAll()
     {
         Console.WriteLine();

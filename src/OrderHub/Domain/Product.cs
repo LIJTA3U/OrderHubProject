@@ -5,6 +5,10 @@ namespace OrderHub.Domain;
 
 public class Product : IComparable<Product>
 {
+
+    // ЗАДАЧА: объявите конструктор с параметрами Name, Price, Category
+    // ЗАДАЧА: переопределите свойства, чтобы они были только для чтения(private set)
+
     public string Name { get; private set; }
     public decimal Price { get; private set; }
     public string Category { get; private set; }
@@ -16,9 +20,10 @@ public class Product : IComparable<Product>
         Category = category;
     }
 
-    // Естественный порядок: по возрастанию цены.
     public int CompareTo(Product? other)
     {
+
+        // ЗАДАЧА: верните результат сравнения по цене — естественный порядок
         if (other is null)
         {
             return 1;
@@ -26,12 +31,13 @@ public class Product : IComparable<Product>
 
         return Price.CompareTo(other.Price);
     }
+    // ЗАДАЧА: объявите класс NameComparer : IComparer<Product>
+    // ЗАДАЧА: реализуйте метод Compare так, чтобы сортировка шла по алфавиту названий
 
     public override string ToString() =>
         $"{Name} — {Price:0.00} ₽ ({Category})";
 }
 
-// Альтернативный порядок: по алфавиту названий.
 public class NameComparer : IComparer<Product>
 {
     public int Compare(Product? a, Product? b)
@@ -58,7 +64,8 @@ public class NameComparer : IComparer<Product>
     }
 }
 
-// Дополнительный компаратор: по убыванию цены.
+// ЗАДАЧА: объявите класс PriceDescComparer : IComparer<Product> — по убыванию цены
+
 public class PriceDescComparer : IComparer<Product>
 {
     public int Compare(Product? a, Product? b)

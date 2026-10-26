@@ -7,7 +7,6 @@ namespace OrderHub.Services;
 public class WarehouseService
 {
     // ЗАДАЧА: объявите Dictionary<string, int> stock — название товара → количество
-    // подсказка: поле инициализируется прямо при объявлении: = new Dictionary<string, int>();
     private readonly Dictionary<string, int> stock = new Dictionary<string, int>();
 
     public void Receive(string productName, int quantity)
@@ -37,7 +36,6 @@ public class WarehouseService
     public bool Sell(string productName, int quantity)
     {
         // ЗАДАЧА 1: если товара нет вообще — сообщите об этом и верните false
-        //         (никаких исключений: используйте TryGetValue)
         if (quantity <= 0)
         {
             Console.WriteLine("Количество продажи должно быть больше нуля.");
@@ -61,8 +59,7 @@ public class WarehouseService
         // ЗАДАЧА 3: уменьшите остаток на quantity
         int remaining = existing - quantity;
 
-        // ЗАДАЧА 4: если остаток стал равен нулю — удалите запись через Remove
-        //         и сообщите, что товар снят с учёта
+        // ЗАДАЧА 4: если остаток стал равен нулю — удалите запись через Remove и сообщите, что товар снят с учёта
         if (remaining == 0)
         {
             if (stock.Remove(productName))
@@ -93,8 +90,7 @@ public class WarehouseService
             return true;
         }
 
-        // ЗАДАЧА: при отсутствии товара присвойте quantity = 0 — значение по умолчанию,
-        //         чтобы у вызывающего кода не было неинициализированной переменной
+        // ЗАДАЧА: при отсутствии товара присвойте quantity = 0 — значение по умолчанию, чтобы у вызывающего кода не было неинициализированной переменной
         quantity = 0;
         return false;
     }
