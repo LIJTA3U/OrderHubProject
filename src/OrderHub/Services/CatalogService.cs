@@ -10,6 +10,7 @@ public class CatalogService
 
     public void AddProduct(string name, decimal price, string category)
     {
+        // ЗАДАЧА: добавьте товар в список products
         products.Add(new Product(name, price, category));
     }
 
@@ -60,6 +61,11 @@ public class CatalogService
 
     public void PrintSortedByNameLength()
     {
+
+        // ЗАДАЧА: отсортируйте лямбдой по длине названия —
+        // Sort((a, b) => a.Name.Length.CompareTo(b.Name.Length));
+        // это делегат Comparison<Product>
+
         var sortedProducts = new List<Product>(products);
 
         sortedProducts.Sort(

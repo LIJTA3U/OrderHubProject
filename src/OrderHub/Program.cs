@@ -20,6 +20,10 @@ foreach (string line in list)
 {
     Console.WriteLine(line);
 }
+
+// ЗАДАЧА: измените порог в threshold на 15000m и запустите заново,
+// покажите, что изменилось только условие, а весь остальной код остался прежним
+
 Console.WriteLine(reports.CountExpensive(products, threshold));
 Console.WriteLine(reports.HasVeryExpensive(products, 50000m));
 Console.WriteLine(reports.AllInStock(products));
