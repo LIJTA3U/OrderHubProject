@@ -155,3 +155,24 @@ foreach (var order in stream.GetOrdersReversed())
 {
     Console.WriteLine(order);
 }
+
+Console.WriteLine();
+Console.WriteLine("=== КТ 39. Пользовательские итераторы ===");
+
+Console.WriteLine("Все заказы через пользовательский IEnumerator (без yield return):");
+var customEnumerator = stream.GetCustomOrders().GetEnumerator();
+while (customEnumerator.MoveNext())
+{
+    Console.WriteLine(customEnumerator.Current);
+}
+customEnumerator.Dispose();
+
+Console.WriteLine();
+
+Console.WriteLine("Перечислитель сброшен (Reset) и пройден снова:");
+customEnumerator.Reset();
+while (customEnumerator.MoveNext())
+{
+    Console.WriteLine(customEnumerator.Current);
+}
+customEnumerator.Dispose();
