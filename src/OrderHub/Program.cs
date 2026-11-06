@@ -120,3 +120,38 @@ foreach (Order order in aboveAverage)
 {
     Console.WriteLine(order);
 }
+
+Console.WriteLine();
+Console.WriteLine("=== КТ 38. Перечислители и итераторы (yield return) ===");
+
+var stream = new OrderStream(orders);
+
+Console.WriteLine("Все заказы через итератор:");
+foreach (var order in stream.GetAllOrders())
+{
+    Console.WriteLine(order);
+}
+
+Console.WriteLine();
+
+Console.WriteLine("Заказы Иванова (фильтрация через yield return):");
+foreach (var order in stream.GetOrdersByCustomer("Иванов"))
+{
+    Console.WriteLine(order);
+}
+
+Console.WriteLine();
+
+Console.WriteLine("Заказы дороже 5000 ₽:");
+foreach (var order in stream.GetOrdersAbovePrice(5000m))
+{
+    Console.WriteLine(order);
+}
+
+Console.WriteLine();
+
+Console.WriteLine("Заказы в обратном порядке:");
+foreach (var order in stream.GetOrdersReversed())
+{
+    Console.WriteLine(order);
+}
