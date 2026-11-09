@@ -5,6 +5,56 @@ using System.Collections.Generic;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
+// КТ 31. Очередь заказов (Queue)
+
+var queueStackService = new OrderService();
+queueStackService.CreateOrder("Иванов", "Клавиатура", 5490m);
+queueStackService.CreateOrder("Петрова", "Монитор", 18990m);
+queueStackService.CreateOrder("Сидоров", "Мышь", 1290m);
+Console.WriteLine("=== КТ 31. Очередь заказов (Queue) ===");
+queueStackService.ProcessNext();
+queueStackService.ProcessNext();
+queueStackService.PrintPendingQueue();
+
+Console.WriteLine();
+
+// КТ 32. Стек отмены (Stack)
+
+Console.WriteLine("=== КТ 32. Стек отмены (Stack) ===");
+queueStackService.UndoLastAction();
+queueStackService.PrintRecentActions();
+
+Console.WriteLine();
+
+// КТ 33. Склад (Dictionary)
+
+var warehouse = new WarehouseService();
+Console.WriteLine("=== КТ 33. Склад (Dictionary) ===");
+warehouse.Receive("Клавиатура", 10);
+warehouse.Receive("Мышь", 20);
+warehouse.Sell("Клавиатура", 3);
+warehouse.PrintStock();
+
+Console.WriteLine();
+
+// КТ 34. Сравнение и сортировка продуктов
+
+var catalog = new CatalogService();
+catalog.AddProduct("Клавиатура", 5490m, "Периферия");
+catalog.AddProduct("Монитор", 18990m, "Мониторы");
+catalog.AddProduct("Мышь", 1290m, "Периферия");
+catalog.AddProduct("Наушники", 7990m, "Аудио");
+Console.WriteLine("=== КТ 34. Сравнение и сортировка продуктов ===");
+catalog.PrintSortedByNaturalOrder();
+catalog.PrintSortedByName();
+catalog.PrintSortedByPriceDescending();
+catalog.PrintSortedByNameLength();
+catalog.PrintAll();
+
+Console.WriteLine();
+
+// КТ 35. Базовые запросы LINQ
+
 var products = new List<Product>
 {
     new Product("Клавиатура", 5490m, "Периферия"),
@@ -35,6 +85,8 @@ Console.WriteLine(reports.Cheapest(products));
 
 Console.WriteLine();
 
+// КТ 36. Сводка по категориям»
+
 Console.WriteLine("=== КТ 36. Сводка по категориям ===");
 
 var summary = reports.SummarizeByCategory(products);
@@ -64,6 +116,8 @@ foreach (string category in categories)
 
 Console.WriteLine();
 Console.WriteLine("=== КТ 37. LINQ-запросы к коллекциям ===");
+
+// КТ 37. LINQ-запросы к коллекциям 
 
 var customers = new List<Customer>
 {
@@ -124,6 +178,8 @@ foreach (Order order in aboveAverage)
 Console.WriteLine();
 Console.WriteLine("=== КТ 38. Перечислители и итераторы (yield return) ===");
 
+// КТ 38. Перечислители и итераторы (yield return) 
+
 var stream = new OrderStream(orders);
 
 Console.WriteLine("Все заказы через итератор:");
@@ -158,6 +214,8 @@ foreach (var order in stream.GetOrdersReversed())
 
 Console.WriteLine();
 Console.WriteLine("=== КТ 39. Пользовательские итераторы ===");
+
+// КТ 39. Пользовательские итераторы 
 
 Console.WriteLine("Все заказы через пользовательский IEnumerator (без yield return):");
 var customEnumerator = stream.GetCustomOrders().GetEnumerator();
